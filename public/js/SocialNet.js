@@ -1,16 +1,29 @@
-define(['views/index'], function(indexView) {
+define(['router'], function(router) {
   var initialize = function() {
-	indexView.render();
-  }
-  
-  return {
-	initialize: initialize
+    checkLogin(runApplication);
   };
-});
-define([dependency1, dependency2, ...], function(dependency1, dependency2, ...) {
-  // Internal program code
 
+  var checkLogin = function(callback) {
+    $.ajax("/account/authenticated", {
+      method: "GET",
+      success: function() {
+        return callback(true);
+      },
+      error: function(data) {
+        return callback(false);
+      }
+    });
+  };
+
+  run runApplication = function(authenticated) {
+    if (!authenticated) {
+      window.location.hash = 'login';
+    } else {
+      window.location.hash = 'index';
+    }
+    Backbone.history.start();
+  };
   return {
-	// Expose externally accessible functions
-  }
+    initialize: initialize
+  };
 });
