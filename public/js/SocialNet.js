@@ -15,7 +15,7 @@ define(['router'], function(router) {
     });
   };
 
-  run runApplication = function(authenticated) {
+  var runApplication = function(authenticated) {
     if (!authenticated) {
       window.location.hash = 'login';
     } else {
@@ -23,6 +23,7 @@ define(['router'], function(router) {
     }
     Backbone.history.start();
   };
+
   return {
     initialize: initialize
   };

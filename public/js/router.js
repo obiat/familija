@@ -8,7 +8,7 @@ define(['views/index', 'views/register', 'views/login', 'views/forgotpassword'],
       "login": "login",
       "register": "register",
       "forgotpassword": "forgotpassword"
-    }
+    },
 
     changeView: function(view) {
       if ( null != this.currentView ) {
@@ -24,8 +24,8 @@ define(['views/index', 'views/register', 'views/login', 'views/forgotpassword'],
 
     login: function() {
       this.changeView(new LoginView());
-     },
-   
+    },
+
     forgotpassword: function() {
       this.changeView(new ForgotPasswordView());
     },
@@ -33,7 +33,8 @@ define(['views/index', 'views/register', 'views/login', 'views/forgotpassword'],
     register: function() {
       this.changeView(new RegisterView());
     }
-  });   
+  });
 
   return new SocialRouter();
 });
+
